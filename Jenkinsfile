@@ -8,7 +8,7 @@ pipeline{
         stage('Checkout'){ 
             steps {
                 git branch: 'main', url: 'https://github.com/KARTIKNAIK18/jenkins-pipeline.git'
-                sh 'tree'
+                sh 'ls -a'
             }
         }
 
