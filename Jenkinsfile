@@ -29,10 +29,16 @@ pipeline{
         }
         stage('Scan'){
             steps{
-                sh '''
-                docker run aquasec/trivy image python:3.4-alpine
-                trivy --version
-                '''
+                withCredentials([usernamePassword(
+                    credentialID: 'docker-cred',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS')]){
+                            sh '''
+                            docker run aquasec/trivy image $DOCKER_USER/blog-app:$IMAGE_TAG
+                            trivy --version
+                            '''
+                    }
+                        
             }
         }
 
