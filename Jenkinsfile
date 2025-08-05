@@ -8,15 +8,16 @@ pipeline{
         stage('Checkout'){ 
             steps {
                 git branch: 'main', url: 'https://github.com/KARTIKNAIK18/jenkins-pipeline.git'
+                sh 'ls -a'
             }
         }
 
         stage('Login'){
             steps{
                 withCredentials([usernamePassword(
-                credentials: 'docker-cred',
+                credentialsId: 'docker-cred',
                 usernameVariable: 'DOCKER_USER',
-                passwordVarible: 'DOCKER_PASS')]){
+                passwordVariable: 'DOCKER_PASS')]){
                     sh '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     '''
