@@ -52,7 +52,7 @@
                         docker pull $DOCKER_USER/blog-app:$IMAGE_TAG
                         docker run -d --name blog_app -p 5000:5000 $DOCKER_USER/blog-app:$IMAGE_TAG
                         sleep 20
-                        docker stop $DOCKER_USER/blog-app:$IMAGE_TAG
+                        docker stop blog_app
                         '''
                 }
             }
