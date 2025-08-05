@@ -42,6 +42,20 @@
                 }
             }
 
+        stage('Deploy'){
+            steps{
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-cred',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS')]){
+                        sh '''
+                        docker pull $DOCKER_USER/blog-app:$IMAGE_TAG
+                        docker run -d -p 5000:5000 $DOCKER_USER/blog-app:$IMAGE_TAG
+                        '''
+                }
+            }
+        }
+
 
     }
     }
