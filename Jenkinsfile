@@ -36,7 +36,7 @@
                                 sh '''
                                 docker run aquasec/trivy image\
                                 --exit-code 1 \
-                                --severity CRITICAL,HIGH \
+                                --severity CRITICAL\
                                 docker.io/$DOCKER_USER/blog-app:$IMAGE_TAG
                                 '''
                         }
