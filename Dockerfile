@@ -12,6 +12,7 @@ WORKDIR /app
 
 COPY --from=builder /usr/local  /usr/local
 COPY --from=builder /app /app
+COPY . .
 
 
 CMD ["python3", "app.py"]
