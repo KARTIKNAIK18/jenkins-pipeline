@@ -27,20 +27,20 @@
                     }
                 }
             }
-            // stage('Scan'){
-            //     steps{
-            //         withCredentials([usernamePassword(
-            //             credentialsId: 'docker-cred',
-            //             usernameVariable: 'DOCKER_USER',
-            //             passwordVariable: 'DOCKER_PASS')]){
-            //                     sh '''
-            //                     docker run aquasec/trivy image\
-            //                     docker.io/$DOCKER_USER/blog-app:$IMAGE_TAG
-            //                     '''
-            //             }
+            stage('Scan'){
+                steps{
+                    withCredentials([usernamePassword(
+                        credentialsId: 'docker-cred',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS')]){
+                                sh '''
+                                docker run aquasec/trivy image\
+                                docker.io/$DOCKER_USER/blog-app:$IMAGE_TAG
+                                '''
+                        }
                             
-            //     }
-            // }
+                }
+            }
 
         stage('Deploy'){
             steps{
