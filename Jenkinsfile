@@ -8,7 +8,7 @@ pipeline{
         stage('Checkout'){ 
             steps {
                 git branch: 'main', url: 'https://github.com/KARTIKNAIK18/jenkins-pipeline.git'
-                sh 'ls -a'
+                sh 'tree'
             }
         }
 
@@ -24,5 +24,14 @@ pipeline{
                 }
             }
         }
+
+        stage('Build & Push'){
+            steps{
+                sh '''
+                docker build -t $IMAGE_NAME .
+                docker push $IMAGE_NAME
+                '''
+            }
+         }
     }
 }
