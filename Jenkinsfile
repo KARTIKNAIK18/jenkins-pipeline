@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        IMAGE_NAME = '$DOCKER_USER/blog-app:v1'
+        IMAGE_TAG = 'v1'
 
     }
     stages{
@@ -28,7 +28,7 @@ pipeline{
         stage('Build & Push'){
             steps{
                 sh '''
-                docker build -t $IMAGE_NAME .
+                docker build -t $DOCKER_USER/blog-app:$IMAGE_TAG .
                 docker push $IMAGE_NAME
                 '''
             }
