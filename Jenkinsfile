@@ -30,7 +30,7 @@ pipeline{
         stage('Scan'){
             steps{
                 withCredentials([usernamePassword(
-                    credentialsID: 'docker-cred',
+                    credentialsId: 'docker-cred',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS')]){
                             sh '''
