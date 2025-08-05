@@ -29,7 +29,7 @@ pipeline{
             steps{
                 sh '''
                 docker build -t $DOCKER_USER/blog-app:$IMAGE_TAG .
-                docker push $IMAGE_NAME
+                docker push $DOCKER_USER/blog-app:$IMAGE_TAG
                 '''
             }
          }
