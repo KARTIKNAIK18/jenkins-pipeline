@@ -27,6 +27,14 @@ pipeline{
                 }
             }
         }
+        stage('Scan'){
+            steps{
+                sh '''
+                docker run aquasec/trivy image python:3.4-alpine
+                trivy --version
+                '''
+            }
+        }
 
 
 }
