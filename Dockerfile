@@ -15,4 +15,4 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 
 COPY . .
 
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
