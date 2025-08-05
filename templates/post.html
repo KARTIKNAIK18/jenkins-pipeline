@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ slug.replace('_', ' ').title() }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to Home</a>
+    <div class="post">
+      {{ content|safe }}
+    </div>
+  </div>
+</body>
+</html>

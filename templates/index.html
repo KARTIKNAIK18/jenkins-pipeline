@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📰 Flask Markdown Blog</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📰 My Flask Blog</h1>
+      <div class="header-actions">
+        <a href="/new" class="new-post-btn">➕ New Post</a>
+        <button id="toggle-dark">🌙 Toggle Dark Mode</button>
+      </div>
+    </div>
+
+    <div class="blog-grid">
+      {% for post in posts %}
+      <div class="blog-card">
+        <div class="card-header">
+          <h2>{{ post.title }}</h2>
+          <div class="card-buttons">
+            <a href="/edit/{{ post.slug }}" class="edit-btn">✏️</a>
+            <a href="/delete/{{ post.slug }}" class="delete-btn" onclick="return confirm('Delete this post?')">⛔</a>
+          </div>
+        </div>
+        <div class="blog-content">
+          {{ post.content|safe }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("toggle-dark");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+  </script>
+</body>
+</html>

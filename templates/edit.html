@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>✏️ Edit Post - {{ post.title }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Post: {{ post.title }}</h1>
+    <form action="/edit/{{ post.slug }}" method="POST" enctype="multipart/form-data">
+      <label>Title:</label>
+      <input type="text" name="title" value="{{ post.title }}" required>
+
+      <label>Content (Markdown):</label>
+      <textarea name="content" rows="10" required>{{ post.raw_content }}</textarea>
+
+      <label>Replace Image (optional):</label>
+      <input type="file" name="image">
+
+      <button type="submit">💾 Update Post</button>
+    </form>
+  </div>
+</body>
+</html>

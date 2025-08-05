@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>➕ Add New Blog</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>➕ Add a New Blog Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <label>Title</label><br>
+      <input type="text" name="title" required><br><br>
+
+      <label>Content (Markdown)</label><br>
+      <textarea name="content" rows="10" required></textarea><br><br>
+
+      <label>Image (Optional)</label><br>
+      <input type="file" name="image" accept="image/*"><br><br>
+
+      <button type="submit">📝 Publish</button>
+      <a href="/">← Back</a>
+    </form>
+  </div>
+</body>
+</html>
