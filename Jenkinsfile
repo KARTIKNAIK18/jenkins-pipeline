@@ -50,9 +50,10 @@
                     passwordVariable: 'DOCKER_PASS')]){
                         sh '''
                         docker pull $DOCKER_USER/blog-app:$IMAGE_TAG
-                        docker run -d --name blog_app -p 5000:5000 $DOCKER_USER/blog-app:$IMAGE_TAG
+                        docker run -d --name blog_app-01 -p 5000:5000 $DOCKER_USER/blog-app:$IMAGE_TAG
                         sleep 20
-                        docker stop blog_app
+                        docker stop blog_app-01
+                        docker rm blog_app-01
                         '''
                 }
             }
