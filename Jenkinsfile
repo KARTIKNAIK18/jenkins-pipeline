@@ -29,6 +29,7 @@ pipeline{
             steps{
                 sh '''
                 docker build -t $DOCKER_USER/blog-app:$IMAGE_TAG .
+                docker images
                 docker push $DOCKER_USER/blog-app:$IMAGE_TAG
                 '''
             }
