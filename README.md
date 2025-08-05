@@ -126,9 +126,9 @@ This allows automatic builds on every push to `main`.
 ---
 
 ## 📸 CI/CD Workflow Screenshots
-
-
 ![Build Success](images/pipeview.png)
+
+## 🪪 Trivy Scan Report
 
 ![Scan Report](images/trivy.png)
 
