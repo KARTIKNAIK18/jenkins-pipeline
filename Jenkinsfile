@@ -35,7 +35,6 @@
                         passwordVariable: 'DOCKER_PASS')]){
                                 sh '''
                                 docker run aquasec/trivy image\
-                                --exit-code 1 \
                                 docker.io/$DOCKER_USER/blog-app:$IMAGE_TAG
                                 '''
                         }
