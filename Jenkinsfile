@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('Login') {
             steps {
-                git 'https://github.com/KARTIKNAIK18/jenkins-pipeline.git'
+                git branch: 'main', url: 'https://github.com/KARTIKNAIK18/jenkins-pipeline.git'
                 withCredentials([usernamePassword(credentials: docker-cred,
                 usernameVariable: 'DOCKER_USER',
                 passwordVarible: 'DOCKER_PASS')]){
