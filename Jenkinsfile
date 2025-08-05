@@ -12,27 +12,21 @@ pipeline{
             }
         }
 
-        stage('Login'){
+        stage('Build & Push'){
             steps{
                 withCredentials([usernamePassword(
                 credentialsId: 'docker-cred',
                 usernameVariable: 'DOCKER_USER',
                 passwordVariable: 'DOCKER_PASS')]){
                     sh '''
+                    docker build -t $DOCKER_USER/blog-app:$IMAGE_TAG .
+                    docker images
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker push $DOCKER_USER/blog-app:$IMAGE_TAG
                     '''
                 }
             }
         }
 
-        stage('Build & Push'){
-            steps{
-                sh '''
-                docker build -t $DOCKER_USER/blog-app:$IMAGE_TAG .
-                docker images
-                docker push $DOCKER_USER/blog-app:$IMAGE_TAG
-                '''
-            }
-         }
-    }
+
 }
